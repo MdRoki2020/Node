@@ -1,0 +1,19 @@
+{
+  "name": "external_modules",
+  "version": "1.0.0",
+  "description": "this is npm testing project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "npm",
+    "node.js",
+    "nodemon"
+  ],
+  "author": "Roki",
+  "license": "ISC",
+  "dependencies": {
+    "random-fruits-name": "^1.9.3"
+  }
+}
