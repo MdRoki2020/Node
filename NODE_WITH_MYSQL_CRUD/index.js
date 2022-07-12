@@ -83,13 +83,33 @@ app.post('',(req,res)=>{
         if(err) throw err
         console.log(`connected as id ${connection.threadId}`)
 
-        const params=req.body;
-
+        
         connection.query("INSERT INTO beers SET ?",params,(err,rows)=>{
             connection.release() //return the connection to pool
 
             if(!err){
                 res.send(`the record name: ${params.name} has been added.`);
+            }else{
+                console.log(err);
+            }
+        })
+        console.log(req.body);
+    })
+})
+
+
+//update
+app.put('',(req,res)=>{
+    pool.getConnection((err,connection)=>{
+        if(err) throw err
+        console.log(`connected as id ${connection.threadId}`)
+
+        const {id,name,tagline,description,image}=req.body
+        connection.query("update beers SET name = ?,tagline = ? where id =?",[name,tagline,id],(err,rows)=>{
+            connection.release() //return the connection to pool
+
+            if(!err){
+                res.send(`the record name: ${name} has been added.`);
             }else{
                 console.log(err);
             }
